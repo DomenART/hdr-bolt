@@ -1,0 +1,89 @@
+<footer class="section-footer">
+    <section class="footer-first uk-container">
+        <div class="uk-grid" uk-grid>
+            <div class="uk-width-2-5@m">
+                <a href="/"><img src="{{ asset('img/logo-footer.png', 'theme') }}" alt="" class="footer__logo"></a>
+                {{ menu(
+                    identifier = 'rights',
+                    template = 'partials/_sub_menu.twig',
+                    params = {
+                        'withsubmenus': false,
+                        'class': 'footer__rights'
+                    }
+                ) }}
+            </div>
+
+            <div class="uk-width-3-5@m">
+                <div class="uk-grid" uk-grid>
+                    <div class="uk-width-1-2@s uk-width-expand@m">
+                        <div class="footer__title">Наш офис</div>
+                        <table class="footer__contacts">
+                            {% for row in theme.footer_contacts %}
+                                <tr>
+                                    <td>{{ row.title }}:</td>
+                                    <td>
+                                        {{ row.phones | join('<br>') | raw }}
+                                        {% for email in row.emails %}
+                                            <a href="mailto:{{ email }}">{{ email }}</a>
+                                            {% if not loop.last %}<br>{% endif %}
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                {% if not loop.last %}
+                                <tr>
+                                    <td colspan="2"><br></td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                    <div class="uk-width-1-2@s uk-width-1-4@m">
+                        <div class="footer__title">Время работы</div>
+                        <table class="footer__contacts">
+                            {% for row in theme.working_hours %}
+                                <tr>
+                                    <td>{{ row.title }}</td>
+                                    <td>{{ row.value }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                    <div class="uk-width-1-2@s uk-width-1-4@m">
+                        <div class="footer__title">Портфолио</div>
+                        {{ menu(
+                            identifier = 'footer',
+                            template = 'partials/_sub_menu.twig',
+                            params = {
+                                'withsubmenus': false,
+                                'class': 'footer__menu'
+                            }
+                        ) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-second uk-container">
+        <div class="uk-grid uk-flex-middle" uk-grid>
+            <div class="uk-width-2-5@m">
+                <div class="footer__copyright">©2017, Студия дизайна GERABYTE: дизайн-проекты квартир, загородных домов, офисов, коммерческой недвижимости, общественных заведений, магазинов, ресторанов и кафе</div>
+                <div></div>
+            </div>
+
+            <div class="uk-width-3-5@m">
+                <div class="footer__right uk-flex uk-flex-between uk-flex-middle">
+                    <div class="uk-flex uk-flex-between uk-flex-middle uk-width-1-1 uk-width-auto@s">
+                        <a href="#" class="footer__sitemap">Карта сайта</a>
+                        <div class="footer__counters">
+                            [^t^]
+                        </div>
+                    </div>
+                    <a href="http://domenart-studio.ru" class="footer__creator" target="_blank">Разработка сайта</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>

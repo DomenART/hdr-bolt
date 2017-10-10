@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ htmllang() }}" class="page">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+                {{ config.get('general/sitename') -}}
+            {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
+        </title>
+        <link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}">
+        <base href="{{ url('homepage') }}">
+    </head>
+    <body>
+        <div id="app" class="wrapper">
+            {{ include('partials/_header.twig') }}
+
+            {% block main %}
+                <div class="uk-container">
+                    <h1>{{ record.title }}</h1>
+                    {{ record.body }}
+                </div>
+            {% endblock main %}
+
+            {{ include('partials/_footer.twig') }}
+	    </div>
+
+        <script  src="{{ asset('js/main.js', 'theme') }}"></script>
+
+    </body>
+</html>

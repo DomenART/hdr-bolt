@@ -1,0 +1,154 @@
+.pagetitle--project {
+	max-width: 964px;
+	padding-top: 100px;
+	margin: 0 auto;
+	text-transform: uppercase;
+	@media (max-width: @breakpoint-xsmall-max) {
+		padding-bottom: 50px;
+		font-size: 30px
+	}
+}
+
+.project-header {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 761px;
+	background-size: cover;
+	@media (max-width: @breakpoint-xsmall-max) {
+		height: 500px;
+	}
+}
+
+.project-bar {
+    .control-bar(absolute);
+    padding: 20px 10px;
+    @media (max-width: @breakpoint-xsmall-max) {
+    	padding: 20px 10px;
+    }
+}
+
+.project-bar__prev,
+.project-bar__next {
+	color: #999999;
+	font-size: 12px;
+	&:hover {
+		color: darken(#999999, 30%);
+		text-decoration: none;
+	}
+}
+
+.project-bar__control {
+	margin-right: 140px;
+	@media (max-width: @breakpoint-small-max) {
+		margin-right: 50px;
+		margin-bottom: 20px;
+	}
+	@media (max-width: @breakpoint-xsmall-max) {
+		width: 100%;
+		margin-bottom: 0;
+		margin-right: 0;
+	}
+}
+
+.project-bar__links {
+	display: block;
+	position: relative;
+	color: #999999;
+	font-size: 12px;
+	&:hover {
+		color: darken(#999999, 30%);
+		text-decoration: none;
+	}
+	img {
+		display: block;
+		padding: 20px 15px;
+	}
+	span {
+		@media (max-width: @breakpoint-xsmall-max) {
+			display: none;
+		}
+	}
+}
+
+.link-prev {
+	margin-right: 31px;
+}
+
+.project-bar__info {
+	@media (max-width: @breakpoint-xsmall-max) {
+		width: 100%;
+		margin-top: -55px;
+	}
+}
+
+.project-bar__year {
+	margin-right: 31px;
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: 2px;
+	@media (max-width: @breakpoint-xsmall-max) {
+		margin-right: 0;
+	}
+}
+
+.project-bar__desc {
+	font-size: 14px;
+	line-height: 1.2;
+	@media (max-width: @breakpoint-xsmall-max) {
+		display: none;
+	}
+}
+
+.project__category {
+	margin-top: 65px;
+	margin-bottom: 45px;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: center;
+}
+
+.project__text {
+	padding-bottom: 90px;
+	max-width: 964px;
+	margin: 0 auto;
+	text-align: center;
+	h2 {
+		margin-bottom: 34px;
+		text-align: center;
+		color: #000000;
+		font-family: @font-alt;
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1.5;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+	p {
+		font-size: 24px;
+		@media (max-width: @breakpoint-xsmall-max) {
+			font-size: 18px;
+		}
+	}
+}
+
+.project-item {
+	position: relative;
+}
+
+.project-item__text {
+	padding: 97px 97px 113px 97px;
+	font-size: 24px;
+	line-height: 1.125;
+	@media (max-width: @breakpoint-small-max) {
+		padding: 50px;
+		font-size: 18px;
+	}
+}
+
+.project-consult {
+	position: absolute;
+	top: 0;
+	right: 0;
+}

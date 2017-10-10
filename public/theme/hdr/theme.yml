@@ -1,0 +1,109 @@
+# Optional config file for the theme.
+
+# Variables that are in this file, can be used in your twig template like {{ theme.foo }}
+
+# Template filenames. If you 're creating a theme for distribution, you can specify
+# the filenames of the templates here. The templates you will set in this config
+# file will override the ones in the global app/config/config.yml, so beware!
+# maintenance_template: maintenance_default.twig
+# homepage_template: index.twig
+# record_template: record.twig
+# listing_template: listing.twig
+# search_results_template: search.twig
+# notfound: notfound.twig
+
+working_hours:
+    - title: Пн-пт
+      value: с 10:00 до 19:00
+    - title: Сб-вс
+      value: Выходные
+
+footer_contacts:
+    - title: Севастополь
+      phones:
+        - +7 (978) 070-43-33
+        - +7 (978) 042-24-43
+    - title: Москва
+      phones:
+        - +7 (985) 875-29-17
+    -  title: E-mail
+       emails:
+         - info@gerabyte.ru
+
+templatefields:
+    home.twig:
+        slides:
+            type: repeater
+            label: Слайды
+            fields:
+                title:
+                    type: text
+                    label: Заголовок
+                image:
+                    type: image
+                    label: Изображение
+                    extensions: [ gif, jpg, png ]
+                content:
+                    type: html
+                    label: Содержимое
+                type:
+                    type: text
+                    label: Тип
+                url:
+                    type: text
+                    label: Адрес
+        comprasion:
+            type: repeater
+            label: Сравнение
+            fields:
+                name:
+                    type: text
+                    label: Название
+                url:
+                    type: text
+                    label: Ссылка
+                image:
+                    type: image
+                    label: Изображение
+                    extensions: [ gif, jpg, png ]
+        working:
+            type: repeater
+            label: Как мы работаем
+            fields:
+                title:
+                    type: text
+                    label: Заголовок
+                desc:
+                    type: html
+                    label: Описание
+                image:
+                    type: image
+                    label: Изображение
+                    extensions: [ gif, jpg, png ]
+        subtitle:
+            type: text
+            label: Подзаголовок
+        receive_title:
+            type: text
+            label: Что вы получаете заголовок
+        receive_list:
+            type: repeater
+            label: Что вы получаете список
+            fields:
+                title:
+                    type: text
+                    label: Текст
+                image:
+                    type: image
+                    label: Изображение
+                    extensions: [ gif, jpg, png, svg ]
+        consider_title:
+            type: text
+            label: Что мы учитываем заголовок
+        consider_list:
+            type: repeater
+            label: Что мы учитываем список
+            fields:
+                title:
+                    type: text
+                    label: Текст

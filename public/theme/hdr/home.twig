@@ -1,0 +1,276 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <section class="slideshow" id="slideshow">
+        <ul class="uk-hidden" uk-switcher="connect: .js-slideshow">
+            {% for i in 1..record.templatefields.slides | length %}
+            <li></li>
+            {% endfor %}
+        </ul>
+        <ul class="slideshow__content uk-switcher js-slideshow">
+            {% for item in record.templatefields.slides %}
+                <li class="slide uk-flex uk-flex-middle uk-flex-center" style="background-image: url('{{ asset(item.image.file, 'files') }}')">
+                    <div class="slide__inner">
+                        <div class="slide__type">{{ item.type }}{{ record.templatefields.slides | length }}</div>
+                        <div class="slide__title">{{ item.title }}</div>
+                        <div class="slide__desc">{{ item.content | raw }}</div>
+                        <div class="slide__more">
+                            <a href="{{ item.url }}" class="uk-button button-intro">Узнать больше<span class="button-arrow"></span></a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="slide-bar" id="slide-bar">
+            <div class="slide-bar__arrows js-slideshow">
+                <span uk-switcher-item="previous"><i uk-icon="icon: chevron-left"></i></span>
+                <span uk-switcher-item="next"><i uk-icon="icon: chevron-right"></i></span>
+            </div>
+            <div class="slide-bar__count">
+                <span class="uk-switcher js-slideshow">
+                    {% for i in 1..record.templatefields.slides | length %}
+                        <b>{{ i }}</b>
+                    {% endfor %}
+                </span> из {{ record.templatefields.slides | length }}
+            </div>
+            <div class="slide-bar__social">
+                <div class="social-links">
+                    <a href="#" class="social-links__item social-links__item--twitter"></a>
+                    <a href="#" class="social-links__item social-links__item--vk"></a>
+                    <a href="#" class="social-links__item social-links__item--instagram"></a>
+                    <a href="#" class="social-links__item social-links__item--youtube"></a>
+                </div>
+            </div>
+            <a href="#second" class="slide-bar__arrow" uk-scroll><i uk-icon="icon: arrow-down; ratio: 1.2"></i></a>
+        </div>
+    </section>
+
+    <section class="section-about" id="second">
+        <div class="uk-container">
+            <div class="section-about__desc">{{ record.teaser }}</div>
+            <h1 class="section-about__title">{{ record.title }}</h1>
+            <div class="section-about__content">{{ record.body }}</div>
+        </div>
+    </section>
+
+    <section class="section-comprasion">
+        <div class="uk-container">
+            {% set comprasion = [] %}
+            {% for item in record.templatefields.comprasion %}
+                {% set comprasion = comprasion | merge([{
+                    'image': asset(item.image.file, 'files'),
+                    'name': item.name,
+                    'url': item.url
+                }]) %}
+            {% endfor %}
+            <comprasion initial-images='{{ comprasion | json_encode }}'></comprasion>
+        </div>
+    </section>
+
+    <section class="section-directions">
+        <div class="uk-container">
+            <div class="uk-grid uk-grid-collapse">
+                <div class="uk-width-1-2@m">
+                    <a href="" class="direction-styles uk-flex uk-flex-middle">
+                        <span class="direction-styles__title">
+                            <span>Исторические стили интерьера</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="uk-width-1-2@m direction-consult uk-flex">
+                    {% include 'partials/_consult.twig' %}
+                </div>
+                <div class="uk-width-1-2@m">
+                    <div class="direction-design uk-flex uk-flex-middle">
+                        <div class="direction-design__image"></div>
+                        <div class="direction-design__container">
+                            <div class="direction-design__title">Дизайн-проекты</div>
+                            <ul class="direction-design__list">
+                                <li><a href="">квартир</a></li>
+                                <li><a href="">загородных домов</a></li>
+                                <li><a href="">офисов</a></li>
+                                <li><a href="">коммерческой недвижимости</a></li>
+                                <li><a href="">общественных заведений</a></li>
+                                <li><a href="">магазинов, ресторанов и кафе</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2@m">
+                    <a href="" class="direction-planning uk-flex uk-flex-middle">
+                        <div class="direction-planning__image"></div>
+                        <span class="direction-planning__title">
+                            <span>Архитектурное проектирование</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="uk-width-1-2@m"></div>
+                <div class="uk-width-1-2@m">
+                    <a href="" class="direction-interior">
+                        <span>Качественный<br>и функциональный интерьер</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-portfolio">
+        <div class="uk-container">
+            <div class="section-title section-title--with-all">
+                <span class="section-title__text">
+                    Портфолио
+                    <a href="#" class="view-all">смотреть все</a>
+                </span>
+            </div>
+            <div class="uk-grid uk-grid-collapse uk-child-width-1-2@m">
+                <div>
+                    <a href="#" class="portfolio-item uk-cover-container uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+                        <img src="{{ asset('img/project-1.jpg', 'theme') }}" alt="" class="portfolio-item__image" uk-cover>
+                        <span class="portfolio-item__title">Название проекта</span>
+                        <span class="portfolio-item__line"></span>
+                        <span class="portfolio-item__desc">Категория проекта</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="portfolio-item uk-cover-container uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+                        <img src="{{ asset('img/project-2.jpg', 'theme') }}" alt="" class="portfolio-item__image" uk-cover>
+                        <span class="portfolio-item__title">Название проекта</span>
+                        <span class="portfolio-item__line"></span>
+                        <span class="portfolio-item__desc">Категория проекта</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="portfolio-item uk-cover-container uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+                        <img src="{{ asset('img/project-3.jpg', 'theme') }}" alt="" class="portfolio-item__image" uk-cover>
+                        <span class="portfolio-item__title">Название проекта</span>
+                        <span class="portfolio-item__line"></span>
+                        <span class="portfolio-item__desc">Категория проекта</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="portfolio-item uk-cover-container uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+                        <img src="{{ asset('img/project-4.jpg', 'theme') }}" alt="" class="portfolio-item__image" uk-cover>
+                        <span class="portfolio-item__title">Название проекта</span>
+                        <span class="portfolio-item__line"></span>
+                        <span class="portfolio-item__desc">Категория проекта</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-working">
+        <div class="uk-container">
+            <div class="section-title section-title--dark">
+                <span class="section-title__text">
+                    Как мы работаем
+                </span>
+            </div>
+
+            <div class="working-list uk-grid uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@m">
+                {% for item in record.templatefields.working %}
+                    <div class="working-item uk-cover-container">
+                        <img src="{{ asset(item.image.file, 'files') }}" alt="" class="working-item__image" uk-cover>
+                        <div class="working-item__container">
+                            <div class="working-item__title">{{ item.title }}</div>
+                            <div class="working-item__desc">{{ item.desc | raw }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-life">
+        <div class="uk-container">
+            <div class="section-title section-title--dark">
+                <span class="section-title__text">
+                    Из жизни дизайнера
+                </span>
+            </div>
+
+            <div class="uk-grid uk-grid-collapse">
+                <div class="uk-width-1-2@m">
+                    <div class="uk-grid uk-grid-collapse">
+                        <div class="uk-width-1-2">
+                            <a href="" class="life-item">
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <span class="life-item__title">Отзывы</span>
+                            </a>
+                            <a href="" class="life-item uk-cover-container">
+                                <img src="{{ asset('img/life-3.jpg', 'theme') }}" alt="" class="life-item__image" uk-cover>
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <span class="life-item__title">Вакансии</span>
+                            </a>
+                        </div>
+                        <div class="uk-width-1-2">
+                            <a href="" class="life-item uk-cover-container">
+                                <img src="{{ asset('img/life-1.jpg', 'theme') }}" alt="" class="life-item__image" uk-cover>
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <span class="life-item__title life-item__title--wide">Картины&nbsp;в<br> интерьер</span>
+                            </a>
+                            <a href="" class="life-item uk-cover-container">
+                                <img src="{{ asset('img/life-4.jpg', 'theme') }}" alt="" class="life-item__image" uk-cover>
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <span class="life-item__square uk-flex uk-flex-middle uk-flex-center">
+                                    <span>О нас</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2@m">
+                    <div class="uk-grid uk-grid-collapse">
+                        <div class="uk-width-1-2">
+                            <a href="" class="life-item uk-cover-container">
+                                <img src="{{ asset('img/life-2.jpg', 'theme') }}" alt="" class="life-item__image" uk-cover>
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <span class="life-item__desc">Дни дизайна в Китае</span>
+                            </a>
+                            <a href="" class="life-item life-item--light">
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <span class="life-item__mc uk-flex uk-flex-column uk-flex-middle uk-flex-center">
+                                    <span class="life-item__mc__abbr">МК</span>
+                                    <span class="life-item__mc__text">
+                                        Мастер-классы
+                                        <hr>
+                                        СТАЖИРОВКА
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="uk-width-1-2">
+                            <a href="" class="life-item">
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <img src="{{ asset('img/spacer.gif', 'theme') }}" alt="" class="life-item__spacer">
+                                <span class="life-item__blog">
+                                    <span class="life-item__blog__title">Зачем нужна<br> 3D-визуализация?</span>
+                                    <span class="life-item__blog__desc">Блог House Room Design</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="home-text">
+                <h2>{{ record.templatefields.subtitle }}</h2>
+                <h3>{{ record.templatefields.receive_title }}</h3>
+                <div class="receive-list">
+                    {% for item in record.templatefields.receive_list %}
+                        <div class="receive-item uk-flex uk-flex-middle">
+                            <div class="receive-item__icon"><img src="{{ asset(item.image.file, 'theme') }}" width="102" alt=""></div>
+                            <div class="receive-item__text">{{ item.title }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <h3>{{ record.templatefields.consider_title }}</h3>
+                <ol class="list-numbers">
+                    {% for item in record.templatefields.consider_list %}
+                        <li>{{ item.title }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </section>
+{% endblock main %}
