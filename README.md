@@ -1,10 +1,32 @@
-### Bolt Installer for Composer
+# House Design Room
 
-To start the install just run the following command replacing the project with
-the name you want to use.
+## Build Setup
 
-`composer create-project bolt/composer-install:^3.3@beta <MYPROJECT> --prefer-dist`
+``` bash
+# установка зависимостей
+npm install
 
+# хапуск сборки для разработки
+npm run dev
 
-After the packages have downloaded, you can choose whether you would like a
-separate public directory and if so choose a name.
+# запуск сборки для продакшена
+npm run build
+```
+## Bolt
+
+``` bash
+# 1. Заходим в контейнер докера
+docker-compose exec --user $(id -u) php bash
+
+# 2. Заходим в папку с проектом
+cd path
+
+# 3. Установка зависимостей компосера
+composer install
+
+# 4. Выходим из контейнера
+exit
+
+# 5. Установка зависимостей npm
+npm install
+```
