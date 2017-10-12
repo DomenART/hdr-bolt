@@ -1,0 +1,269 @@
+{% extends 'partials/_master.twig' %}
+{% block main %}
+<header class="prices-header">
+	<div class="uk-container">
+		<div class="breadcrumb uk-flex uk-flex-center">
+            <ul class="uk-breadcrumb">
+                <li><a href="{{path('homepage')}}">Главная</a></li>
+                <li>Цены</li>
+            </ul>
+		</div>
+		<h1 class="pagetitle pagetitle--prices">{{record.title}}</h1>
+		<div class="prices__text">
+			{{record.body}}
+		</div>
+	</div>
+</header>
+<section class="prices-services">
+	<div class="uk-container">
+		<div class="section-title section-title--dark section-title--prices ">
+			<span class="section-title__text">
+				Цены на услуги House Design Room
+			</span>
+		</div>
+		<div class="uk-grid uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@l" uk-height-match="target: .services-item__text">
+            {% for row in record.templatefields.prices_pricelist %}
+				<div class="services-item" style="background-image: url('{{asset(row.image.file,'files')}}')">
+					<div class="services-item__title">{{row.title}}</div>
+					<div class="services-item__text">{{row.desc}}</div>
+					<div class="services-item__price">
+						<span>{{row.price}}</span>
+						руб/м<sup>2</sup>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<section class="prices-packages">
+	<div class="uk-container">
+		<div class="section-title section-title--dark">
+			<span class="section-title__text">
+				Пакеты
+			</span>
+		</div>
+		<div class="js-packages-wrapper uk-grid uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@m">
+            {% for row in record.templatefields.prices_packages %}
+				<div class="packages-item">
+					<div class="packages-item__title uk-flex uk-flex-middle uk-flex-center">{{row.title}}</div>
+					<div class="packages-item__desc uk-flex uk-flex-middle uk-flex-center">{{row.subtitle}}</div>
+					<div class="packages-item__actual-price">
+						<span>{{row.price}}</span>
+						<sup class="packages-item__unit">
+							руб/м<sup>2</sup>
+						</sup>
+					</div>
+					<div class="packages-item__old-price">
+						{{row.oldprice}} руб.
+					</div>
+					<div class="packages-item__text">
+						{{row.desc | nl2br}}
+					</div>
+					<div class="packages-item__button">
+						<a href="{{row.link}}" class="uk-button button-intro button-intro--packages">Заказать<span class="button-arrow"></span></a>
+					</div>
+				</div>
+            {% endfor %}
+		</div>
+	</div>
+</section>
+<section class="prices-cost">
+	<div class="uk-container">
+		<div class="section-title section-title--white">
+			<span class="section-title__text">
+				ЧТО ВХОДИТ В СТОИМОСТЬ?
+			</span>
+		</div>
+		<div class="uk-grid uk-child-width-1-2@m">
+			<div>
+				<div class="consult consult--prices">
+					<div class="consult__title">С ЧЕГО НАЧАТЬ?</div>
+					<div class="consult__text">
+						Запишитесь на консультацию<br>
+						с возможностью выезда на ваш объект
+					</div>
+					<button class="uk-button button-framed button-intro--consult">Записаться<span class="button-arrow"></span></button>
+				</div>
+			</div>
+			<div class="uk-flex-first uk-flex-last@m">
+				<div class="prices-cost__text">
+					{{record.templatefields.prices_cost}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="prices-composition">
+	<div class="uk-container">
+		<div class="section-title section-title--dark">
+			<span class="section-title__text">
+				 СОСТАВ ДИЗАЙН-ПРОЕКТА
+			</span>
+		</div>
+		<div class="uk-grid uk-child-width-1-2@xl">
+			<div>
+			  	<div class="prices-composition-slider">
+					<div class="composition-slider">
+						<img src="{{ asset('img/composition-slider.png', 'theme') }}">
+						<ul class="uk-hidden" uk-switcher="connect: .js-prices-slider">
+                            {% for row in record.templatefields.prices_slider %}
+						 	    <li></li>
+                            {% endfor %}
+						</ul>
+						<ul class="composition-slider__content uk-switcher js-prices-slider">
+                            {% for row in record.templatefields.prices_slider %}
+							   <li style="background-image: url('{{asset(row.image.file,'files')}}')"></li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="composition-slider__control uk-flex uk-flex-right uk-flex-middle">
+						<div class="slide-bar__arrows js-prices-slider">
+							<span uk-switcher-item="previous"><i uk-icon="icon: chevron-left"></i></span>
+							<span uk-switcher-item="next"><i uk-icon="icon: chevron-right"></i></span>
+						</div>
+						<div class="composition-slider__counter">
+							<span class="uk-switcher js-prices-slider">
+                                {% for i in 1..record.templatefields.prices_slider | length %}
+									<span class="composition-slider__active">
+										{{i}}
+									</span>
+								{% endfor %}
+							</span>
+							из
+                            <span class="composition-slider__active"></span>
+                                {{ record.templatefields.prices_slider | length }}
+                            </span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<ol class="prices-compostion__list">
+					{% for row in record.templatefields.prices_slider %}
+						<li>{{row.text}}</li>
+                    {% endfor %}
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="prices-calculations">
+	<div class="uk-container">
+		<div class="section-title section-title--dark">
+			<span class="section-title__text">
+				РАССЧИТАТЬ СТОИМОСТЬ
+			</span>
+		</div>
+		<div class="prices-calculations__text">
+			Узнайте сколько вам нужно будет потратить на: дизайнера, мебель, технику, материалы и отделочные работы. Мы бесплатно проконсультируем, о том где можно купить как дорогие, качественные материалы, так и недорогие с хорошим соотношением цена/качества.
+	    </div>
+		<div class="calculation__container">
+			<div class="calculation__tip">
+				Введите ваши данные и мы рассчитаем стоимость дизайн проекта в 3-х категориях<br>
+					<span class="form-required">*</span>Поле “Телефон” обязательно для заполнения
+			</div>
+			<form class="calculation">
+                <div class="calculation__row uk-child-width-1-2@m" uk-grid>
+                    <div>
+                        <div class="uk-grid-collapse" uk-grid >
+                            <div class="uk-width-1-4@s">
+                                <div class="calculation__title">Стиль</div>
+                            </div>
+                            <div class="uk-width-3-4@s">
+                                    <input type="text" class="uk-input calculation__input" placeholder="Классический">
+                                <div class="calculation__desc">
+                                    Выберите стиль интерьера, который <br> вам больше нравится
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-grid-collapse" uk-grid>
+                            <div class="uk-width-1-4@s">
+                                <div class="calculation__title">Площадь</div>
+                            </div>
+                            <div class="uk-width-3-4@s">
+                                <div class="calculation__input-box uk-flex">
+                                    <input type="text" class="uk-input calculation__input" placeholder="100"><div class="calculation__meter">м<sup>2</sup></div>
+                                </div>
+                                <div class="calculation__desc">
+                                    Введите площадь (по полу)<br>вашего помещения
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calculation__row">
+                    <div class="uk-child-width-1-2@m" uk-grid>
+                        <div>
+                            <div class="uk-grid uk-grid-collapse">
+                                <div class="uk-width-1-4@s">
+                                    <div class="calculation__title">Место</div>
+                                </div>
+                                <div class="uk-width-3-4@s">
+                                    <input type="text" class="uk-input calculation__input" placeholder="Севастополь">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-grid uk-grid-collapse">
+                                <div class="uk-width-1-4@s">
+                                    <div class="calculation__title">Место</div>
+                                </div>
+                                <div class="uk-width-3-4@s">
+                                    <input type="text" class="uk-input calculation__input" placeholder="Севастополь">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calculation__desc">
+                        Введите город или название населенного пункта, где находится ваш объект
+                    </div>
+                </div>
+                <div class="calculation__row">
+                    <div class="uk-child-width-1-2@m" uk-grid>
+                        <div>
+                            <div class="uk-grid-collapse" uk-grid >
+                                <div class="uk-width-1-4@s">
+                                    <div class="calculation__title">Имя</div>
+                                </div>
+                                <div class="uk-width-3-4@s">
+                                    <input type="text" class="uk-input calculation__input" placeholder="Севастополь">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-grid uk-grid-collapse">
+                                <div class="uk-width-1-4@s">
+                                    <div class="calculation__title">Телефон<span class="form-required">*</span></div>
+                                </div>
+                                <div class="uk-width-3-4@s">
+                                    <input type="tel" class="uk-input calculation__input" placeholder="+7 123 000 00 00" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calculation__desc">
+                        Введите данные, по которым с вами можно связаться после расчета стоимости
+                    </div>
+                </div>
+                <div class="calculation__submit">
+                    <div class="uk-grid uk-grid-large uk-flex-middle">
+                        <div class="uk-width-2-3@s">
+                            <input id="calculation-check" type="checkbox" name="calculation-check" checked>
+                            <div class="calculation__conditions">
+                                <label for="calculation-check">
+                                    Нажимая кнопку “Отправить”, подтверждаю, что прочитал(-а) <a href="#">Конфиденциальное соглашение</a> и соглашаюсь с <a href="#">Политикой обработки персональных данных</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-3@s">
+                            <button type="submit" class="uk-button button-intro button-intro--calculation">Отправить<span class="button-arrow"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
+</section>
+{% endblock main %}

@@ -2,19 +2,120 @@
 
 {% block main %}
 
-    <h1>{{ record.title }}</h1>
+<header class="article-header">
+    <div class="uk-container">
+        <div class="breadcrumb uk-flex uk-flex-center">
+            <ul class="uk-breadcrumb">
+                <li><a href="{{path('homepage')}}">Главная</a></li>
+                <li>Статья</li>
+            </ul>
+        </div>
+        <h1 class="pagetitle pagetitle--article">{{record.title}}</h1>
+        <div></div>
+    </div>
+</header>
+<main class="article-main">
+    <div class="uk-container">
+        <div class="article-promo">
+            <img src="{{ record.image|image }}" alt="">
+            <div class="article-promo__info uk-grid uk-grid-collapse uk-child-width-1-2@s uk-flex-middle">
+                <div class="uk-flex uk-flex-middle">
+                    <time class="article-promo__date">{{record.published_at|date("D,M,Y") }}</time>
+                    <a href="{{ path('contentlisting', {'contenttypeslug': 'articles'}) }}" class="article-promo__section">Статьи</a>
+                </div>
+                <div class="uk-flex uk-flex-middle uk-flex-between uk-flex-wrap">
+                    <a href="" class="article-promo__like">147</a>
+                    <a href="" class="article-promo__comment">12</a>
+                    <a href="" class="article-promo__view">122345</a>
+                    <div class="article-promo__nav">
+                        {% set previous = record.previous() %}
+                        {% set next = record.next() %}
+                        {% setcontent first = 'articles/1' returnsingle %}
+                        {% setcontent last = 'articles/latest/1' returnsingle %}
+                        <a href="{{ previous.link ?: last.link }}"><span uk-icon="icon: chevron-left"></span></a>
+                        <a href="{{ next.link ?: first.link }}"><span uk-icon="icon: chevron-right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-wrapper">
+            <article class="article-content uk-clearfix">
+                {{record.body}}
+            </article>
+            <section class="article-control">
+                <div class="uk-grid uk-flex-middle">
+                    <div class="uk-width-1-3@m uk-flex uk-flex-middle uk-flex-around uk-flex-betwee@m">
+                        <a href="#" class="article-control__link"><span uk-icon="icon: arrow-left"></span>Вернуться к статьям</a>
+                        {% set previous = record.previous() %}
+                        {% set next = record.next() %}
+                        {% setcontent first = 'articles/1' returnsingle %}
+                        {% setcontent last = 'articles/latest/1' returnsingle %}
+                        <a href="{{ previous.link ?: last.link }}"><span uk-icon="icon: chevron-left"></span></a>
+                        <a href="{{ next.link ?: first.link }}"><span uk-icon="icon: chevron-right"></span></a>
+                    </div>
+                    <div class="uk-width-1-3@m uk-flex uk-flex-middle uk-flex-around uk-flex-betwee@m">
+                        <a href="#" class="article-promo__like">147</a>
+                        <a href="#" class="article-promo__comment">12</a>
+                        <a href="#" class="article-promo__view">122345</a>
+                    </div>
+                    <div class="uk-width-1-3@m uk-text-center uk-text-right@m">
+                        <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                        <script src="//yastatic.net/share2/share.js"></script>
+                        <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter"></div>
+                    </div>
+                </div>
+            </section>
+            {% set readmore = record.related() %}
+            {% if readmore is not empty %}
+            <section class="article-readmore">
+                <div class="article-readmore__header">
+                    Похожие статьи
+                </div>
+                <div class="uk-child-width-1-3@s uk-text-center uk-text-left@s" uk-grid>
+                   
 
-    {# Output all fields, in the order as defined in the contenttype.
-       To change the generated html and configure the options, see:
-       https://docs.bolt.cm/templating #}
-    {% with { 'record': record, 'common': false, 'repeaters': true } %}
-    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
-    {% endwith %}
+                            
+                                
+                              
+                                {% for related in readmore %}
+                                <div>
+                                            <article class="readmore-item">
+                                                <div class="readmore-item__image">
+                                                    <a href="{{ related.link }}">
+                                                        <img src="{{ thumbnail(related.image, 260, "") }}" alt="">
+                                                    </a>
+                                                </div>
+                                                <time class="readmore-item__date">
+                                                    {{record.published_at|date("d,m,Y") }}
+                                                </time>
+                                                <div class="readmore-item__title">
+                                                    <a href="{{ related.link }}">
+                                                        {{ related.title }}
+                                                    </a>
+                                                </div>
+                                            </article>
+                    
+                                        </div>
 
-    {# Uncomment this if you wish to dump the entire record to the client, for debugging purposes.
-    {{ dump(record) }}
-    #}
+                                  
 
-    {% include 'partials/_recordfooter.twig' with { 'record': record, 'extended': true } %}
+                                {%  endfor %}
+                               
+                           
+
+
+
+          
+                        
+                
+                </div>
+            </section>
+            {% endif %}
+            <section class="article-comments">
+        
+            </section>
+        </div>
+    </div>
+</main>
 
 {% endblock main %}

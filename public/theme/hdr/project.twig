@@ -1,0 +1,79 @@
+{% extends 'partials/_master.twig' %}
+{% block main %}
+<header class="project-header" style="background: url('{{record.image|image}}') no-repeat 50% 50%; background-size: cover">
+	<div class="uk-container">
+		<div class="breadcrumb breadcrumb--white uk-flex uk-flex-center">
+            <ul class="uk-breadcrumb">
+                <li><a href="{{path('homepage')}}">Главная</a></li>
+                <li>Проект</li>
+            </ul>
+		</div>
+		<h1 class="pagetitle pagetitle--white pagetitle--project">{{record.title}}</h1>
+		<div class="project-bar uk-flex uk-flex-wrap uk-flex-middle">
+			<div class="project-bar__control uk-flex uk-flex-middle uk-flex-between uk-flex-left@s">
+				{% set previous = record.previous() %}
+				{% set next = record.next() %}
+				{% setcontent first = 'projects/1' returnsingle %}
+				{% setcontent last = 'projects/latest/1' returnsingle %}
+				<span class="link-prev">
+					<a href="{{ previous.link ?: last.link }}" class="project-bar__links">
+						<img src="{{'img/project-arr-left.svg'|image}}" alt=""><span>предыдущий</span>
+					</a>
+				</span>
+				<span class="link-next">
+					<a href="{{ next.link ?: first.link }}" class="project-bar__links">
+						<img src="{{'img/project-arr-right.svg'|image}}" alt=""><span>следующий</span>
+					</a>
+				</span>
+			</div>
+			<div class="project-bar__info uk-flex uk-flex-wrap uk-flex-center uk-flex-left@s">
+				<time class="project-bar__year">
+					{{record.published_at|	date("Y") }}
+				</time>
+				<div class="project-bar__desc">
+                    {{record.teaser}}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<main>
+	<div class="uk-container">
+		<div class="project__category">
+		НАЗВАНИЕ КАТЕГОРИИ
+		</div>
+		<div class="project__text">
+			{{record.body}}
+		</div>
+	</div>
+	<div class="project-pool">
+		<div class="uk-grid uk-grid-collapse uk-child-width-1-2@s uk-flex uk-flex-bottom">
+			<div id="project-pool-left">
+				{% for row in record.templatefields.project_album %}
+                    <div class="project-item js-project-item">
+                        <img src="{{asset(row.image.file,'files')}}" alt="">
+                        {% if row.text %}
+                            <div class="project-item__text">{{row.text | nl2br}}</div>
+                        {% endif %}
+                        {% if row.consult %}
+                            <div class="project-consult">
+                                <div class="consult uk-flex uk-flex-middle">
+                                    <div>
+                                        <div class="consult__text">
+                                            Бесплатная консультация<br>
+                                            от дизайнера<br>
+                                            House Room Design
+                                        </div>
+                                        <button class="uk-button button-framed">Заказать<span class="button-arrow"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+				{% endfor %}
+			</div>
+			<div id="project-pool-right"></div>
+		</div>
+	</div>
+</main>
+{% endblock main %}

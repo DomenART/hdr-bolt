@@ -14130,6 +14130,9 @@ td.uk-text-break {
   font-size: 14px;
   line-height: 1.2;
 }
+.project-bar__desc p {
+  margin: 0;
+}
 @media (max-width: 639px) {
   .project-bar__desc {
     display: none;
@@ -14552,6 +14555,7 @@ td.uk-text-break {
 .article-promo {
   width: 1300px;
   height: auto;
+  min-height: 101px;
   position: relative;
   top: 0;
   left: -100px;
@@ -14693,11 +14697,18 @@ td.uk-text-break {
   list-style-type: none;
   padding-left: 100px;
 }
+.article-content ul li {
+  padding-left: 25px;
+  position: relative;
+}
 .article-content ul li::before {
   content: '';
   padding-left: 25px;
   width: 8px;
   height: 8px;
+  position: absolute;
+  top: 10px;
+  left: -10px;
   background: url(../img/list-marker.svg?5faf7916a8a4434c814f19d6580d7f48) 50% 50% no-repeat;
 }
 @media (max-width: 639px) {

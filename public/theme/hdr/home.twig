@@ -1,5 +1,4 @@
 {% extends 'partials/_master.twig' %}
-
 {% block main %}
     <section class="slideshow" id="slideshow">
         <ul class="uk-hidden" uk-switcher="connect: .js-slideshow">
@@ -44,7 +43,6 @@
             <a href="#second" class="slide-bar__arrow" uk-scroll><i uk-icon="icon: arrow-down; ratio: 1.2"></i></a>
         </div>
     </section>
-
     <section class="section-about" id="second">
         <div class="uk-container">
             <div class="section-about__desc">{{ record.teaser }}</div>
@@ -52,7 +50,6 @@
             <div class="section-about__content">{{ record.body }}</div>
         </div>
     </section>
-
     <section class="section-comprasion">
         <div class="uk-container">
             {% set comprasion = [] %}
@@ -66,7 +63,6 @@
             <comprasion initial-images='{{ comprasion | json_encode }}'></comprasion>
         </div>
     </section>
-
     <section class="section-directions">
         <div class="uk-container">
             <div class="uk-grid uk-grid-collapse">
@@ -113,7 +109,6 @@
             </div>
         </div>
     </section>
-
     <section class="section-portfolio">
         <div class="uk-container">
             <div class="section-title section-title--with-all">
@@ -158,7 +153,6 @@
             </div>
         </div>
     </section>
-
     <section class="section-working">
         <div class="uk-container">
             <div class="section-title section-title--dark">
@@ -180,7 +174,6 @@
             </div>
         </div>
     </section>
-
     <section class="section-life">
         <div class="uk-container">
             <div class="section-title section-title--dark">
@@ -188,7 +181,6 @@
                     Из жизни дизайнера
                 </span>
             </div>
-
             <div class="uk-grid uk-grid-collapse">
                 <div class="uk-width-1-2@m">
                     <div class="uk-grid uk-grid-collapse">
@@ -251,8 +243,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </div>    
             <div class="home-text">
                 <h2>{{ record.templatefields.subtitle }}</h2>
                 <h3>{{ record.templatefields.receive_title }}</h3>

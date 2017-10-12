@@ -9,6 +9,7 @@
 .article-promo {
     width: 1300px;
     height: auto;
+    min-height: 101px;
     position: relative;
     top: 0;
     left: -100px;
@@ -158,12 +159,19 @@
     ul {
         list-style-type: none;
         padding-left: 100px;
-        li::before {
-            content: '';
+        li {
             padding-left: 25px;
-            width: 8px;
-            height: 8px;
-            background: url('../img/list-marker.svg') 50% 50% no-repeat;
+            position: relative;
+            &::before {
+                content: '';
+                padding-left: 25px;
+                width: 8px;
+                height: 8px;
+                position: absolute;
+                top: 10px;
+                left: -10px;
+                background: url('../img/list-marker.svg') 50% 50% no-repeat;
+            }
         }
         @media (max-width: @breakpoint-xsmall-max) {
             padding-left: 50px;

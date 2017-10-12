@@ -1,0 +1,65 @@
+{% extends 'partials/_master.twig' %}
+{% block main %}
+<div class="uk-container">
+	<div class="breadcrumb uk-flex uk-flex-center">
+	    <ul class="uk-breadcrumb">
+			<li><a href="{{path('homepage')}}">Главная</a></li>
+			<li>Контакты</li>
+		</ul>
+	</div>
+	<h1 class="pagetitle">{{record.title}}</h1>
+	<div class="contacts">
+		<div class="contacts__bg-image" style="background: url('{{asset(record.templatefields.contacts_image, 'files')}}') no-repeat 50% 50%"></div>
+		<address class="contacts-info">
+			<div class="uk-grid uk-grid-collapse uk-child-width-1-2@s">
+				<div>
+					<div class="contacts-info__col">
+						{% for item in record.templatefields.contacts_info %}
+							<div class="contacts-info__row">
+								{{item.text}}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div>
+					<div class="contacts-info__col">
+						{% for item in record.templatefields.contacts_social %}
+							<div class="contacts-info__row">
+								<a href="{{item.url}}">{{item.text}}</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</address>
+		<div class="contacts-form">
+			<div class="contacts-form__title">
+				Есть вопросы?<br>Пишите нам
+			</div>
+			<form>
+				<div class="contacts-input-row">
+					<input type="text" name="name" class="contacts-input uk-input" placeholder="Представьтесь">
+				</div>
+				<div class="contacts-input-row">
+					<input type="email" name="email" class="contacts-input uk-input" placeholder="Электронная почта*" required>
+				</div>
+				<div class="contacts-input-row">
+					<input type="tel" name="phone" class="contacts-input uk-input" placeholder="Укажите телефон">
+				</div>
+				<div class="contacts-textarea-row">
+					<textarea name="message" class="contacts-textarea uk-textarea" rows="5" placeholder="Сообщение"></textarea>
+				</div>
+				<div class="contacts-input-row uk-flex uk-flex-top">
+					<input type="checkbox" id="contacts-conditions" name="conditions" class="uk-checkbox contacts-checkbox">
+					<label for="contacts-conditions" class="contacts__conditions">
+						Нажимая “Отправить”, подтверждаю, что прочитал(-а) <a href="#">Конфиденциальное соглашение</a> и соглашаюсь с <a href="#">Политикой обработки персональных данных</a>
+					</label>
+				</div>
+				<button class="uk-button button-intro button-intro--contacts">Отправить<span class="button-arrow"></span></button>
+				<input type="hidden" name="nomail" value="nomail">
+			</form>
+		</div>
+	</div>
+</div>
+<div class="substrate"></div>
+{% endblock main %}

@@ -107,3 +107,93 @@ templatefields:
                 title:
                     type: text
                     label: Текст
+    contacts.twig:
+        contacts_info:
+            type: repeater
+            label: Контактная информация
+            fields:
+                text:
+                    type: text
+                    label: Строка информации
+        contacts_social:
+            type: repeater
+            label: Социальные ссылки
+            fields:
+                text:
+                    type: text
+                    label: Строка информации
+                url:
+                    type: text
+                    label: Адрес
+        contacts_image:
+            type: image
+            label: Изображение
+            extensions: [ gif, jpg, png ]
+    prices.twig:
+        prices_pricelist:
+            type: repeater
+            label: Цены на услуги
+            fields:
+                title:
+                    type: text
+                    label: Заголовок
+                desc:
+                    type: text
+                    label: Описание
+                price:
+                    type: text
+                    label: Стоимость
+                image:
+                    type: image
+                    label: Фоновое изображение
+        prices_packages:
+            type: repeater
+            label: Пакеты услуг
+            fields:
+                title:
+                    type: text
+                    label: Заголовок
+                subtitle:
+                    type: text
+                    label: Подаголовок
+                price:
+                    type: text
+                    label: Актуальная стоимость
+                oldprice:
+                    type: text
+                    label: Старая стоимость
+                desc:
+                    type: textarea
+                    label: Описание
+                link:
+                    type: text
+                    label: Ссылка
+        prices_cost:
+            type: html
+            label: Что входит в стоимость
+        prices_slider:
+            type: repeater
+            label: Слайдер состава дизайна проекта
+            fields:
+                image:
+                    type: image
+                    label: Изображение слайда
+                text:
+                    type: text
+                    label: Сопутствующий текст
+    project.twig:
+        project_album:
+            type: repeater
+            label: Альбом изображений проекта
+            fields: 
+                image:
+                    type: image
+                    label: Изображение
+                text: 
+                    type: textarea
+                    label: Текст
+                consult:
+                    type: checkbox
+                    label: Консультация
+                    
+        
