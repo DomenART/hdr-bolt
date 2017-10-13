@@ -135,7 +135,7 @@ templatefields:
             label: Цены на услуги
             fields:
                 title:
-                    type: text
+                    type: textarea
                     label: Заголовок
                 desc:
                     type: text

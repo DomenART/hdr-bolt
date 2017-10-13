@@ -1,6 +1,7 @@
 {% extends 'partials/_master.twig' %}
 {% block main %}
 <header class="prices-header">
+	<div class="header-substrate"></div>
 	<div class="uk-container">
 		<div class="breadcrumb uk-flex uk-flex-center">
             <ul class="uk-breadcrumb">
@@ -24,7 +25,7 @@
 		<div class="uk-grid uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@l" uk-height-match="target: .services-item__text">
             {% for row in record.templatefields.prices_pricelist %}
 				<div class="services-item" style="background-image: url('{{asset(row.image.file,'files')}}')">
-					<div class="services-item__title">{{row.title}}</div>
+					<div class="services-item__title">{{row.title | nl2br}}</div>
 					<div class="services-item__text">{{row.desc}}</div>
 					<div class="services-item__price">
 						<span>{{row.price}}</span>
@@ -129,8 +130,8 @@
 									</span>
 								{% endfor %}
 							</span>
-							из
-                            <span class="composition-slider__active"></span>
+							<span class="composition-slider__from">из</span>
+							<span class="composition-slider__total">
                                 {{ record.templatefields.prices_slider | length }}
                             </span>
 						</div>
@@ -170,7 +171,7 @@
                                 <div class="calculation__title">Стиль</div>
                             </div>
                             <div class="uk-width-3-4@s">
-                                    <input type="text" class="uk-input calculation__input" placeholder="Классический">
+                                    <input type="text" name="calculation-"class="uk-input calculation__input" placeholder="Классический">
                                 <div class="calculation__desc">
                                     Выберите стиль интерьера, который <br> вам больше нравится
                                 </div>

@@ -1,6 +1,7 @@
 {% extends 'partials/_master.twig' %}
 {% block main %}
 <header class="project-header" style="background: url('{{record.image|image}}') no-repeat 50% 50%; background-size: cover">
+	<div class="header-substrate"></div>
 	<div class="uk-container">
 		<div class="breadcrumb breadcrumb--white uk-flex uk-flex-center">
             <ul class="uk-breadcrumb">
@@ -40,7 +41,11 @@
 <main>
 	<div class="uk-container">
 		<div class="project__category">
-		НАЗВАНИЕ КАТЕГОРИИ
+			{% if record.taxonomy.categories is defined %}
+				{% for category in record.taxonomy.categories %}
+					{{ category }}
+				{% endfor %}
+			{% endif %}
 		</div>
 		<div class="project__text">
 			{{record.body}}

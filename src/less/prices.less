@@ -140,7 +140,6 @@
 
 .packages-item__title {
   	min-height: 56px;
-	margin-bottom: 15px;
 	text-align: center;
 	font-size: 28px;
 	line-height: 1;
@@ -152,7 +151,7 @@
 	text-align: center;
 	color: #666666;
 	font-size: 14px;
-	line-height: 1.5;
+	line-height: 1.2;
 }
 
 .packages-item__actual-price {
@@ -172,8 +171,8 @@
 }
 
 .packages-item__old-price {
-	margin-bottom: 40px;
-	margin-left: 40px;
+	margin-bottom: 44px;
+	margin-left: 35px;
 	color: #999999;
 	text-decoration: line-through;
 	@media (max-width: @breakpoint-xsmall-max) {
@@ -183,7 +182,7 @@
 
 .packages-item__text {
 	margin-left: 40px;
-	margin-bottom: 23px;
+	margin-bottom: 16px;
 	color: #666666;
 	font-size: 16px;
 }
@@ -208,8 +207,14 @@
 .prices-cost__text {
 	color: #fff;
 	h2 {
+		margin-bottom: 30px;
 		font-size: 28px;
+		font-weight: 400;
 		color: #fff;
+		&:first-of-type {
+			margin-top: 0;
+		}
+		
 	}
 }
 
@@ -245,6 +250,7 @@
 
 .composition-slider {
 	position: relative;
+	margin-bottom: 35px;
 }
 
 .composition-slider__content {
@@ -261,14 +267,23 @@
 }
 
 .composition-slider__control {
-	margin-right: 20px;
-	padding-bottom: 19px;
+	margin: 0 15px;
+	padding: 0 10px 10px 10px;
 	border-bottom: 1px solid #e6e6e6;
+	position: relative;
+	.slide-bar__arrows {
+		margin-right: 115px;
+	}
+	svg {
+		color: #676767;
+	}
 }
 
 .composition-slider__counter {
-	width: 100px;
-	margin-left: 35px;
+	position: absolute;
+	right: 0;
+	top: 43%;
+	transform: translateY(-50%);
 	color: #999999;
 	font-size: 18px;
 	span {
@@ -276,8 +291,17 @@
 	}
 }
 
-.composition-slider__active {
+span.composition-slider__active {
 	color: #000;
+}
+
+span.composition-slider__from {
+	margin: 0 9px;
+	font-size: 18px;
+}
+
+span.composition-slider__total {
+	color: #999;
 }
 
 .prices-compostion__list {

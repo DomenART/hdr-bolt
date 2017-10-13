@@ -1,13 +1,13 @@
 {% extends 'partials/_master.twig' %}
-
 {% block main %}
-
 <header class="article-header">
+    <div class="header-substrate"></div>
     <div class="uk-container">
         <div class="breadcrumb uk-flex uk-flex-center">
             <ul class="uk-breadcrumb">
                 <li><a href="{{path('homepage')}}">Главная</a></li>
-                <li>Статья</li>
+                <li><a href="{{ path('contentlisting', {'contenttypeslug': 'articles'}) }}">Статьи</a></li>
+                <li>{{record.title}}</li>
             </ul>
         </div>
         <h1 class="pagetitle pagetitle--article">{{record.title}}</h1>
@@ -81,15 +81,13 @@
                                         </a>
                                     </div>
                                     <time class="readmore-item__date">
-                                        {{record.published_at|date("d,m,Y") }}
+                                        {{record.published_at|date("d.m.Y") }}
                                     </time>
                                     <div class="readmore-item__title">
-                                        <a href="{{ related.link }}">
-                                            {{ related.title }}
-                                        </a>
+                                        <a href="{{ related.link }}">{{ related.title }}</a>
                                     </div>
                                 </article>
-                                </div>
+                            </div>
                         {% endfor %}   
                     </div>
                 </section>
@@ -100,5 +98,4 @@
         </div>
     </div>
 </main>
-
 {% endblock main %}

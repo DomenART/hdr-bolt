@@ -209,7 +209,6 @@
 .article-control {
     margin: 67px 0 80px;
     border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid #f8f8f8;
     a {
         font-size: 13px;
         &:hover {
@@ -269,6 +268,9 @@ a.article-control__link {
 
 .readmore-item__image {
     margin-bottom: 19px;
+    &:hover {
+        filter: opacity(75%);
+    }
     @media (max-width: @breakpoint-xsmall-max) {
         margin-bottom: 5px;
     }
@@ -299,6 +301,7 @@ a.article-control__link {
 
 .article-comments {
     padding-top: 38px;
+    border-top: 1px solid #f8f8f8;
 }
 
 span.ticket-comment-author {

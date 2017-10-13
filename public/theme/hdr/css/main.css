@@ -11721,6 +11721,9 @@ td.uk-text-break {
 .pagetitle--white {
   color: #fff;
 }
+.header-substrate {
+  height: 58px;
+}
 .breadcrumb {
   padding: 31px 0 27px;
   margin-bottom: 54px;
@@ -13743,10 +13746,10 @@ td.uk-text-break {
   }
 }
 .contacts {
-  position: relative;
+  background: linear-gradient(to bottom, #f7f7f4 40%, #ffffff 40%);
 }
-.substrate--contacts {
-  height: 761px;
+.contacts-content {
+  position: relative;
 }
 .contacts__bg-image {
   width: 1300px;
@@ -13761,7 +13764,7 @@ td.uk-text-break {
 }
 .contacts-info {
   position: absolute;
-  top: -120px;
+  top: -100px;
   right: 0;
   width: 600px;
   min-height: 300px;
@@ -13791,6 +13794,7 @@ td.uk-text-break {
     width: 100%;
     height: auto;
     padding: 18px 0;
+    margin-bottom: 30px;
   }
   .contacts-info::before {
     display: none;
@@ -13801,7 +13805,7 @@ td.uk-text-break {
   padding-left: 40px;
 }
 .contacts-info__row {
-  margin-bottom: 9px;
+  margin-bottom: 25px;
 }
 .contacts-form {
   position: relative;
@@ -13894,7 +13898,7 @@ td.uk-text-break {
   margin-bottom: 15px;
 }
 .contacts-textarea-row {
-  margin: 50px 0 25px;
+  margin: 50px 0 15px;
 }
 .contacts-checkbox {
   margin-top: 2px;
@@ -14323,7 +14327,6 @@ td.uk-text-break {
 }
 .packages-item__title {
   min-height: 56px;
-  margin-bottom: 15px;
   text-align: center;
   font-size: 28px;
   line-height: 1;
@@ -14334,7 +14337,7 @@ td.uk-text-break {
   text-align: center;
   color: #666666;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.2;
 }
 .packages-item__actual-price {
   text-align: center;
@@ -14351,8 +14354,8 @@ td.uk-text-break {
   font-weight: 400;
 }
 .packages-item__old-price {
-  margin-bottom: 40px;
-  margin-left: 40px;
+  margin-bottom: 44px;
+  margin-left: 35px;
   color: #999999;
   text-decoration: line-through;
 }
@@ -14363,7 +14366,7 @@ td.uk-text-break {
 }
 .packages-item__text {
   margin-left: 40px;
-  margin-bottom: 23px;
+  margin-bottom: 16px;
   color: #666666;
   font-size: 16px;
 }
@@ -14385,8 +14388,13 @@ td.uk-text-break {
   color: #fff;
 }
 .prices-cost__text h2 {
+  margin-bottom: 30px;
   font-size: 28px;
+  font-weight: 400;
   color: #fff;
+}
+.prices-cost__text h2:first-of-type {
+  margin-top: 0;
 }
 .consult--prices {
   position: static;
@@ -14421,6 +14429,7 @@ td.uk-text-break {
 }
 .composition-slider {
   position: relative;
+  margin-bottom: 35px;
 }
 .composition-slider__content {
   position: absolute;
@@ -14435,21 +14444,37 @@ td.uk-text-break {
   background-size: cover;
 }
 .composition-slider__control {
-  margin-right: 20px;
-  padding-bottom: 19px;
+  margin: 0 15px;
+  padding: 0 10px 10px 10px;
   border-bottom: 1px solid #e6e6e6;
+  position: relative;
+}
+.composition-slider__control .slide-bar__arrows {
+  margin-right: 115px;
+}
+.composition-slider__control svg {
+  color: #676767;
 }
 .composition-slider__counter {
-  width: 100px;
-  margin-left: 35px;
+  position: absolute;
+  right: 0;
+  top: 43%;
+  transform: translateY(-50%);
   color: #999999;
   font-size: 18px;
 }
 .composition-slider__counter span {
   font-size: 24px;
 }
-.composition-slider__active {
+span.composition-slider__active {
   color: #000;
+}
+span.composition-slider__from {
+  margin: 0 9px;
+  font-size: 18px;
+}
+span.composition-slider__total {
+  color: #999;
 }
 .prices-compostion__list {
   max-width: 450px;
@@ -14750,7 +14775,6 @@ td.uk-text-break {
 .article-control {
   margin: 67px 0 80px;
   border-top: 1px solid #f8f8f8;
-  border-bottom: 1px solid #f8f8f8;
 }
 .article-control a {
   font-size: 13px;
@@ -14800,6 +14824,9 @@ a.article-control__link span {
 .readmore-item__image {
   margin-bottom: 19px;
 }
+.readmore-item__image:hover {
+  filter: opacity(75%);
+}
 @media (max-width: 639px) {
   .readmore-item__image {
     margin-bottom: 5px;
@@ -14830,6 +14857,7 @@ a.article-control__link span {
 }
 .article-comments {
   padding-top: 38px;
+  border-top: 1px solid #f8f8f8;
 }
 span.ticket-comment-author {
   color: #b0b2b1;
