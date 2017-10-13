@@ -35,7 +35,7 @@ pages:
         template:
             type: templateselect
             filter: '*.twig'
-    taxonomy: [ groups ]
+    taxonomy: [ categories ]
     recordsperpage: 100
 
 
@@ -50,11 +50,11 @@ pages:
 # The 'sort' is set to '-datepublish', which means that newer entries will be
 # shown above older entries.
 
-entries:
+articles:
     name: Статьи
     singular_name: Статья
-    slug: entries
-    singular_slug: entry
+    slug: articles
+    singular_slug: article
     fields:
         title:
             type: text
@@ -75,12 +75,12 @@ entries:
         video:
             type: video
     relations:
-        pages:
-          multiple: false
+        articles:
+          multiple: true
           order: title
           label: Select a page
     taxonomy: [ categories, tags ]
-    record_template: entry.twig
+  #  record_template: entry.twig
     listing_records: 10
     default_status: published
     sort: -datepublish
@@ -92,6 +92,34 @@ entries:
 # copy some fields to your own ContentTypes.
 # Since no templates are defined for this ContentType, the default record_template,
 # listing_template, and related settings are used from config.yml
+
+projects:
+    name: Проекты
+    singular_name: Проект
+    slug: projects
+    singular_slug: project
+    fields:
+        title:
+            type: text
+            class: large
+            group: content
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+        teaser:
+            type: html
+            height: 150px
+        body:
+            type: html
+            height: 300px
+        template:
+            type: templateselect
+            filter: '*.twig'
+    taxonomy: [ categories ]
+    recordsperpage: 100
+
 
 showcases:
     name: Showcases
@@ -307,3 +335,4 @@ blocks:
 #            filter: '*_xyz.twig'
 #    taxonomy: [ tags ]
 #    recordsperpage: 20
+

@@ -309,11 +309,16 @@ h4,
 .uk-h4 {
   font-size: 1.25rem;
   line-height: 1.4;
+  padding-left: 100px;
   margin-bottom: 25px;
   color: #000000;
   font-size: 24px;
   font-weight: 400;
   line-height: 1.25;
+}
+h4 + div,
+.uk-h4 + div {
+  padding-left: 100px;
 }
 h5,
 .uk-h5 {
@@ -14563,6 +14568,9 @@ td.uk-text-break {
 }
 .article-promo a:hover {
   color: #fff;
+}
+.article-promo img {
+  width: 100%;
 }
 @media (max-width: 1300px) {
   .article-promo {

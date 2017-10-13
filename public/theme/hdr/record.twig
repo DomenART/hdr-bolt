@@ -20,7 +20,7 @@
             <img src="{{ record.image|image }}" alt="">
             <div class="article-promo__info uk-grid uk-grid-collapse uk-child-width-1-2@s uk-flex-middle">
                 <div class="uk-flex uk-flex-middle">
-                    <time class="article-promo__date">{{record.published_at|date("D,M,Y") }}</time>
+                    <time class="article-promo__date">{{record.published_at|date("d.m.y") }}</time>
                     <a href="{{ path('contentlisting', {'contenttypeslug': 'articles'}) }}" class="article-promo__section">Статьи</a>
                 </div>
                 <div class="uk-flex uk-flex-middle uk-flex-between uk-flex-wrap">
@@ -67,49 +67,32 @@
             </section>
             {% set readmore = record.related() %}
             {% if readmore is not empty %}
-            <section class="article-readmore">
-                <div class="article-readmore__header">
-                    Похожие статьи
-                </div>
-                <div class="uk-child-width-1-3@s uk-text-center uk-text-left@s" uk-grid>
-                   
-
-                            
-                                
-                              
-                                {% for related in readmore %}
-                                <div>
-                                            <article class="readmore-item">
-                                                <div class="readmore-item__image">
-                                                    <a href="{{ related.link }}">
-                                                        <img src="{{ thumbnail(related.image, 260, "") }}" alt="">
-                                                    </a>
-                                                </div>
-                                                <time class="readmore-item__date">
-                                                    {{record.published_at|date("d,m,Y") }}
-                                                </time>
-                                                <div class="readmore-item__title">
-                                                    <a href="{{ related.link }}">
-                                                        {{ related.title }}
-                                                    </a>
-                                                </div>
-                                            </article>
-                    
-                                        </div>
-
-                                  
-
-                                {%  endfor %}
-                               
-                           
-
-
-
-          
-                        
-                
-                </div>
-            </section>
+                <section class="article-readmore">
+                    <div class="article-readmore__header">
+                        Похожие статьи
+                    </div>
+                    <div class="uk-child-width-1-3@s uk-text-center uk-text-left@s" uk-grid>
+                        {% for related in readmore %}
+                            <div>
+                                <article class="readmore-item">
+                                    <div class="readmore-item__image">
+                                        <a href="{{ related.link }}">
+                                            <img src="{{ thumbnail(related.image, 260, "") }}" alt="">
+                                        </a>
+                                    </div>
+                                    <time class="readmore-item__date">
+                                        {{record.published_at|date("d,m,Y") }}
+                                    </time>
+                                    <div class="readmore-item__title">
+                                        <a href="{{ related.link }}">
+                                            {{ related.title }}
+                                        </a>
+                                    </div>
+                                </article>
+                                </div>
+                        {% endfor %}   
+                    </div>
+                </section>
             {% endif %}
             <section class="article-comments">
         
