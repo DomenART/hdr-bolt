@@ -71,22 +71,22 @@ if(window.innerWidth > 960) {
 /**
  * Split projects into two columns
  */
-var projectItems = document.querySelectorAll('.js-project-item')
+var projectItems = document.querySelectorAll('.js-project-item');
 if (projectItems.length) {
-	let leftCol = document.getElementById('project-pool-left')
-	let rightCol = document.getElementById('project-pool-right')
-	let leftHeight = 0
-	let rightHeight = 0
+	let leftCol = document.getElementById('project-pool-left');
+	let rightCol = document.getElementById('project-pool-right');
+	let leftHeight = 0;
+	let rightHeight = 0;
 
 	for (let i = 1; i < projectItems.length; i++) {
-		let item = projectItems[i]
+		let item = projectItems[i];
 
 		if (leftHeight < rightHeight) {
-			leftHeight += item.offsetHeight
+			leftHeight += item.offsetHeight;
 		} else {
-			leftCol.removeChild(item)
-			rightCol.appendChild(item)
-			rightHeight += item.offsetHeight
+			leftCol.removeChild(item);
+			rightCol.appendChild(item);
+			rightHeight += item.offsetHeight;
 		}
 	}
 }

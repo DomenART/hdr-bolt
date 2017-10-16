@@ -7,7 +7,7 @@
             <ul class="uk-breadcrumb">
                 <li><a href="{{path('homepage')}}">Главная</a></li>
                 <li><a href="{{ path('contentlisting', {'contenttypeslug': 'articles'}) }}">Статьи</a></li>
-                <li>{{record.title}}</li>
+                <li>{{ record.title }}</li>
             </ul>
         </div>
         <h1 class="pagetitle pagetitle--article">{{record.title}}</h1>
@@ -20,7 +20,7 @@
             <img src="{{ record.image|image }}" alt="">
             <div class="article-promo__info uk-grid uk-grid-collapse uk-child-width-1-2@s uk-flex-middle">
                 <div class="uk-flex uk-flex-middle">
-                    <time class="article-promo__date">{{record.published_at|date("d.m.y") }}</time>
+                    <time class="article-promo__date">{{ record.published_at|date("d.m.y") }}</time>
                     <a href="{{ path('contentlisting', {'contenttypeslug': 'articles'}) }}" class="article-promo__section">Статьи</a>
                 </div>
                 <div class="uk-flex uk-flex-middle uk-flex-between uk-flex-wrap">

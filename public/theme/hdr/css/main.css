@@ -13921,65 +13921,54 @@ td.uk-text-break {
 .button-intro--contacts .button-intro__arrow {
   margin-left: 34px;
 }
+.portfolio-header {
+  background-color: #f7f7f4;
+}
 .pagetitle--portfolio {
   margin-bottom: 33px;
 }
-.portfolio__filter {
+.portfolio-filter {
   padding-bottom: 10px;
 }
-.filter__years {
+.portfolio-filter__years {
   padding: 15px 0;
-}
-.filter__years ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-.filter__years ul li {
+.portfolio-filter__years li {
   display: inline-block;
   margin: 5px 5px 5px 10px;
   padding: 7px 0;
   color: #333333;
 }
-.filter__years ul li:first-of-type {
+.portfolio-filter__years li:first-of-type {
   margin-left: 0;
 }
-.filter__years ul label {
+.portfolio-filter__years label {
   cursor: pointer;
 }
-.filter__years ul input:checked ~ label {
+.portfolio-filter__years input:checked ~ span {
   font-weight: 500;
   border-bottom: 1px solid #cc0000;
 }
-.filter__years ul input {
+.portfolio-filter__years input {
   display: none;
 }
-.filter__category {
+.portfolio-filter__category {
   padding: 20px 0;
 }
-.filter__select {
+.portfolio-filter__select {
   padding-right: 30px !important;
   border: 2px solid #333333;
   background-color: rgba(229, 229, 229, 0);
   position: relative;
   background-image: url(../img/select-icon.svg?1fa37710f53adfda7d41e1d6872e37bd) !important;
   background-position: 98% !important;
+  cursor: pointer;
 }
-.portfolio-pool {
-  position: relative;
-}
-.portfolio-pool::after {
-  content: '';
-  position: absolute;
-  top: 190px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -50;
-  background-color: #4d4d4c;
-}
-.portfolio-pool .btn {
-  display: none;
+.portfolio-content {
+  background: linear-gradient(to bottom, #f7f7f4 200px, #4d4d4c 200px);
 }
 .portfolio-pool__control {
   padding: 115px 0 56px;
@@ -13995,9 +13984,6 @@ td.uk-text-break {
 .button-intro--portfolio:hover {
   background-color: #373737;
 }
-.button-intro--portfolio .button-intro__arrow {
-  margin-left: 30px;
-}
 .view-all--portfolio {
   top: 60%;
   left: 65%;
@@ -14005,9 +13991,9 @@ td.uk-text-break {
 }
 @media (max-width: 959px) {
   .view-all--portfolio {
-    top: 100%;
+    top: 80%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%);
   }
 }
 .pagetitle--project {
@@ -14988,6 +14974,9 @@ a.edit {
   text-decoration: underline;
   letter-spacing: 1.4px;
   cursor: pointer;
+}
+.articles-content {
+  padding-bottom: 50px;
 }
 
 .comprasion__header {

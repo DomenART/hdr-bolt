@@ -7100,6 +7100,8 @@ if (projectItems.length) {
 			leftCol.removeChild(item);
 			rightCol.appendChild(item);
 			rightHeight += item.offsetHeight;
+			console.log('Левая ', leftHeight);
+			console.log('Правая ', rightHeight);
 		}
 	}
 }

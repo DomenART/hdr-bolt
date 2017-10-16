@@ -81,6 +81,7 @@ articles:
           label: Select a page
     taxonomy: [ categories, tags ]
   #  record_template: entry.twig
+    listing_template: articles.twig
     listing_records: 10
     default_status: published
     sort: -datepublish
@@ -118,6 +119,7 @@ projects:
             type: templateselect
             filter: '*.twig'
     taxonomy: [ categories ]
+    listing_template: portfolio.twig
     recordsperpage: 100
 
 
@@ -335,4 +337,3 @@ blocks:
 #            filter: '*_xyz.twig'
 #    taxonomy: [ tags ]
 #    recordsperpage: 20
-

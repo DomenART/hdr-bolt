@@ -5,8 +5,9 @@
 	<div class="uk-container">
 		<div class="breadcrumb breadcrumb--white uk-flex uk-flex-center">
             <ul class="uk-breadcrumb">
-                <li><a href="{{path('homepage')}}">Главная</a></li>
-                <li>Проект</li>
+				<li><a href="{{ path('homepage') }}">Главная</a></li>
+				<li><a href="{{ path('contentlisting', {'contenttypeslug': 'projects'}) }}">Портфолио</a></li>
+                <li>{{ record.title }}</li>
             </ul>
 		</div>
 		<h1 class="pagetitle pagetitle--white pagetitle--project">{{record.title}}</h1>
@@ -29,10 +30,10 @@
 			</div>
 			<div class="project-bar__info uk-flex uk-flex-wrap uk-flex-center uk-flex-left@s">
 				<time class="project-bar__year">
-					{{record.published_at|	date("Y") }}
+					{{ record.published_at|	date("Y") }}
 				</time>
 				<div class="project-bar__desc">
-                    {{record.teaser}}
+                    {{ record.teaser }}
 				</div>
 			</div>
 		</div>
@@ -48,7 +49,7 @@
 			{% endif %}
 		</div>
 		<div class="project__text">
-			{{record.body}}
+			{{ record.body }}
 		</div>
 	</div>
 	<div class="project-pool">

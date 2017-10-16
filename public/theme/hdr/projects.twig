@@ -1,0 +1,80 @@
+{% extends 'partials/_master.twig' %}
+{% block main %}
+	<header class="portfolio-header">
+		<div class="header-substrate"></div>
+		<div class="uk-container">
+			<div class="breadcrumb uk-flex uk-flex-center">
+				<ul class="uk-breadcrumb">
+					<li><a href="{{path('homepage')}}">Главная</a></li>
+					<li>Портфолио</li>
+				</ul>
+			</div>
+			<h1 class="pagetitle pagetitle--portfolio">{{record.title}}</h1>
+		</div>
+	</header>
+	<main class="portfolio-content">
+		<div class="uk-container">
+			<div class="portfolio-filter uk-flex uk-flex-between">
+				<ul class="portfolio-filter__years uk-flex uk-flex-middle">
+					<li>
+						<label>
+							<input type="radio" name="portfolio-years" checked>
+							<span>Все</span>
+						</label>
+					</li>
+					<li>
+						<label>
+							<input type="radio" name="portfolio-years" checked>
+							<span>2016</span>
+						</label>
+					</li>
+					<li>
+						<label>
+							<input type="radio" name="portfolio-years" checked>
+							<span>2015</span>
+						</label>
+					</li>
+					<li>
+						<label>
+							<input type="radio" name="portfolio-years" checked>
+							<span>2014</span>
+						</label>
+					</li>
+				</ul>
+				<div class="portfolio-filter__category">
+					<select class="uk-select portfolio-filter__select">
+						<option checked disabled>Выберите категорию</option>
+						<option>Архитектурное проектирование</option>
+						<option>Ландшафтное проектирование</option>
+					</select>
+				</div>
+			</div>
+			<div class="portfolio-pool">
+				{% setcontent projects = 'projects/random/1' %}
+				<div class="uk-grid uk-grid-collapse uk-child-width-1-2@m">
+					{% for record in projects %}
+						<div>
+							<a href="{{ record.link }}" class="portfolio-item uk-cover-container uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+								<img src="{{ record.image | image }}" alt="" class="portfolio-item__image" uk-cover>
+								<span class="portfolio-item__title">{{ record.title }}</span>
+								<span class="portfolio-item__line"></span>
+								<span class="portfolio-item__desc">
+									{% if record.taxonomy.categories is defined %}
+										{% for category in record.taxonomy.categories %}
+											{{ category }}
+										{% endfor %}
+									{% endif %}
+								</span>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="portfolio-pool__control uk-flex uk-flex-center">
+					<button class="uk-button button-intro button-intro--portfolio">Показать ещё<span class="button-arrow"></span></button>
+					<a href="#" class="view-all view-all--portfolio">показать все</a>
+				</div>
+			</div>
+			
+		</div>
+	</main>
+{% endblock main %}
