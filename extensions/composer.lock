@@ -1,0 +1,178 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "48d533292170610254e3ea5b0fa77523",
+    "packages": [
+        {
+            "name": "bobdenotter/seo",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bobdenotter/seo.git",
+                "reference": "96918c2c7fcfd01aaa01ba14480fd639dba3ba37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bobdenotter/seo/zipball/96918c2c7fcfd01aaa01ba14480fd639dba3ba37",
+                "reference": "96918c2c7fcfd01aaa01ba14480fd639dba3ba37",
+                "shasum": ""
+            },
+            "require": {
+                "bolt/bolt": "^3.0"
+            },
+            "type": "bolt-extension",
+            "extra": {
+                "bolt-assets": "web",
+                "bolt-class": "Bolt\\Extension\\BobdenOtter\\Seo\\SeoExtension"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bolt\\Extension\\BobdenOtter\\Seo\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bob den Otter",
+                    "email": "bob@twokings.nl"
+                }
+            ],
+            "description": "An extension to easily manage SEO title, meta description and OG tags.",
+            "support": {
+                "source": "https://github.com/bobdenotter/seo/tree/1.0.5",
+                "issues": "https://github.com/bobdenotter/seo/issues"
+            },
+            "time": "2017-09-13T13:36:11+00:00"
+        },
+        {
+            "name": "domenart/views",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elessar/Sites/development/views",
+                "reference": "78ae21d249b84bd012153adb63b47565388fbee2",
+                "shasum": null
+            },
+            "require": {
+                "bolt/bolt": "^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.7"
+            },
+            "type": "bolt-extension",
+            "extra": {
+                "bolt-assets": "web",
+                "bolt-class": "Bolt\\Extension\\DomenART\\Views\\ViewsExtension",
+                "bolt-icon": "bolt-icon.png",
+                "bolt-screenshots": [
+                    "screenshots/screenshot1.png"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bolt\\Extension\\DomenART\\Views\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Bolt\\Extension\\DomenART\\Views\\Tests\\": "tests",
+                    "Bolt\\Tests\\": "vendor/bolt/bolt/tests/phpunit/unit/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kundius Ruslan",
+                    "email": "kundius.ruslan@gmail.com"
+                }
+            ],
+            "description": "Views for content types",
+            "keywords": [
+                "views"
+            ],
+            "transport-options": {
+                "symlink": false
+            }
+        },
+        {
+            "name": "soapbox/taxonomyeditor",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/graham73may/bolt-taxonomy-editor.git",
+                "reference": "37303a166460f647332670e3491850c69e64e86b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/graham73may/bolt-taxonomy-editor/zipball/37303a166460f647332670e3491850c69e64e86b",
+                "reference": "37303a166460f647332670e3491850c69e64e86b",
+                "shasum": ""
+            },
+            "require": {
+                "bolt/bolt": "^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.7"
+            },
+            "type": "bolt-extension",
+            "extra": {
+                "bolt-assets": "web",
+                "bolt-class": "Bolt\\Extension\\Soapbox\\TaxonomyEditor\\TaxonomyEditorExtension"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bolt\\Extension\\Soapbox\\TaxonomyEditor\\": "src",
+                    "Bolt\\Extension\\Soapbox\\TaxonomyEditor\\Exceptions\\": "exceptions"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Bolt\\Extension\\Soapbox\\TaxonomyEditor\\Tests\\": "tests",
+                    "Bolt\\Tests\\": "vendor/bolt/bolt/tests/phpunit/unit/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham May",
+                    "email": "graham.may@soapbox.co.uk"
+                }
+            ],
+            "description": "An extension to add a GUI to edit taxonomies.",
+            "keywords": [
+                "categories",
+                "category",
+                "editor",
+                "gui",
+                "tags",
+                "taxonomy",
+                "taxonomy editor",
+                "taxonomy visual editor"
+            ],
+            "support": {
+                "source": "https://github.com/graham73may/bolt-taxonomy-editor/tree/master",
+                "issues": "https://github.com/graham73may/bolt-taxonomy-editor/issues"
+            },
+            "time": "2017-08-02T19:07:22+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "domenart/views": 20
+    },
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

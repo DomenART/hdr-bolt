@@ -4,6 +4,10 @@ tags:
     behaves_like: tags
     postfix: 'Add some freeform tags. Start a new tag by typing a comma or space.'
     allow_spaces: false
+    name: Tags
+    singular_name: Tag
+    has_sortorder: false
+    tagcloud: true
 groups:
     slug: groups
     singular_slug: group
@@ -13,6 +17,10 @@ groups:
         meta: 'Meta group'
         other: 'The other stuff'
     has_sortorder: true
+    name: Groups
+    singular_name: Group
+    allow_spaces: false
+    tagcloud: false
 categories:
     name: Categories
     slug: categories
@@ -22,4 +30,6 @@ categories:
     multiple: true
     options:
         arhitekturnoe-proektirovanie: 'Архитектурное проектирование'
-        modern: Современные
+    has_sortorder: false
+    allow_spaces: false
+    tagcloud: false

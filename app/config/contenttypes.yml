@@ -32,9 +32,15 @@ pages:
         body:
             type: html
             height: 300px
+            options:
+                ckeditor:
+                    toolbar: Basic
         template:
             type: templateselect
             filter: '*.twig'
+        seo:
+            type: seo
+            group: "SEO settings"
     taxonomy: [ categories ]
     recordsperpage: 100
 
@@ -69,11 +75,17 @@ articles:
         body:
             type: html
             height: 300px
+            options:
+                ckeditor:
+                    toolbar: Basic
         image:
             type: image
             group: media
         video:
             type: video
+        seo:
+            type: seo
+            group: "SEO settings"
     relations:
         articles:
           multiple: true
@@ -121,146 +133,6 @@ projects:
     taxonomy: [ categories ]
     listing_template: portfolio.twig
     recordsperpage: 100
-
-
-showcases:
-    name: Showcases
-    slug: showcases
-    singular_name: Showcase
-    singular_slug: showcase
-    fields:
-        title:
-            type: text
-            class: large
-            required: true
-            pattern: ".{2,255}" # see: http://html5pattern.com/
-            error: "The Title field is required, and must contain at least 2 characters"
-            group: Text
-        slug:
-            type: slug
-            uses: [ title ]
-        html:
-            type: html
-            height: 150px
-        textarea:
-            type: textarea
-            postfix: "<p><em>This is a plain text area. the contents will not be processed.</em></p>"
-        markdown:
-            type: markdown
-            postfix: "<p><em>This field gets parsed as <a href='https://help.github.com/articles/markdown-basics'>Markdown</a>, when rendered on the site.</em></p>"
-        geolocation:
-            type: geolocation
-            group: Media
-        video:
-            type: video
-        image:
-            type: image
-            attrib: title # Note: retrieve this in your template with {{ record.values.image.title }}
-            extensions: [ gif, jpg, png ]
-        imagelist:
-            type: imagelist
-        file:
-            type: file
-            group: files
-        filelist:
-            type: filelist
-        checkbox:
-            type: checkbox
-            label: "This is a checkbox"
-            group: other
-        datetime:
-            type: datetime
-            default: "2000-01-01"
-            variant: inline
-        date:
-            type: date
-            default: "first day of last month"
-            variant: inline
-        integerfield:
-            type: integer
-            index: true
-        floatfield:
-            type: float
-        selectfield:
-            type: select
-            values: [ foo, bar, baz ]
-        multiselect:
-            type: select
-            values: [ A-tuin, Donatello, Rafael, Leonardo, Michelangelo, Koopa, Squirtle ]
-            multiple: true
-            postfix: "Select your favourite turtle(s)."
-        selectentry:
-            type: select
-            values: entries/id,title
-            postfix: "Select an entry"
-            autocomplete: true
-            sort: title
-        repeater:
-            type: repeater
-            group: repeater
-            limit: 3
-            prefix: "<p>This allows you to create multiple sets of fields. Use the add button at the bottom to create a new empty set.</p>"
-            fields:
-                repeattitle:
-                    type: text
-                repeatimage:
-                    type: image
-                    extensions: [ gif, jpg, png ]
-                repeatcontent:
-                    type: html
-    relations:
-        entries:
-            multiple: false
-            label: "Choose an entry"
-            order: -id
-            format: "{{ item.title|escape }} (№ {{ item.id }})"
-            postfix: "By selecting an Entry, you're creating a bi-directional relationship to that Entry."
-        pages:
-            multiple: true
-            order: title
-            label: Select zero or more pages
-    taxonomy: [ categories, tags ]
-    show_on_dashboard: true
-    default_status: published
-    searchable: true
-    icon_many: "fa:gift"
-    icon_one: "fa:gift"
-
-
-# The 'Blocks' ContentType is a so-called 'resource ContentType'. This means
-# that it can be used to manage smaller pieces of content, like the 'about us'
-# text, an 'our address' in the footer, or similar short blurbs of text.
-# For more info, see: https://docs.bolt.cm/howto/resource-contenttype
-
-blocks:
-    name: Blocks
-    singular_name: Block
-    fields:
-        title:
-            type: text
-            class: large
-            group: "Block"
-        slug:
-            type: slug
-            uses: [ title ]
-        content:
-            type: html
-            height: 150px
-        contentlink:
-            type: text
-            label: Link
-            placeholder: 'contenttype/slug or http://example.org/'
-            postfix: "Use this to add a link for this Block. This could either be an 'internal' link like <tt>page/about</tt>, if you use a contenttype/slug combination. Otherwise use a proper URL, like `http://example.org`."
-        image:
-            type: image
-            attrib: title
-            extensions: [ gif, jpg, png ]
-    show_on_dashboard: true
-    viewless: true
-    default_status: published
-    searchable: false
-    icon_many: "fa:cubes"
-    icon_one: "fa:cube"
 
 # Possible field types:
 #
